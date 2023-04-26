@@ -1,7 +1,12 @@
-<div class="upload-csv">
-    <h1>Upload CSV File</h1>
+<div class="home-section">
+  <div class="upload-csv">
+    <h1><i class="fa-solid fa-spinner"></i> Sube aqui tu archivo CSV</h1>
     <input type="file" (change)="onFileSelected($event)" accept=".csv" />
-    <button (click)="uploadCsv()" [disabled]="!csvData">Upload</button>
+    <div class="config">
+      <button (click)="uploadCsv()" [disabled]="!csvData">Subir</button> 
+      <button routerLink="/">Atras</button>
+    </div>
     <p *ngIf="uploadMessage">{{ uploadMessage }}</p>
   </div>
+</div>
   

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ReceptionUsersService } from 'src/services/reception-users.service';
 
 @Component({
   selector: 'app-upload-csv',
@@ -7,7 +8,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./upload-csv.component.scss']
 })
 export class UploadCsvComponent {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private receptionUsersService: ReceptionUsersService) {}
+
 
   csvData: string | null = null;
   uploadMessage: string | null = null;
@@ -37,25 +39,23 @@ export class UploadCsvComponent {
       return;
     }
   
-    // Define la URL del endpoint
-    const url = 'http://127.0.0.1:8000/reception/';
-  
     // Crea un objeto FormData para enviar el archivo CSV
     const formData = new FormData();
     formData.append('file', new Blob([this.csvData], { type: 'text/csv' }), 'file.csv');
   
-    // Realiza una solicitud POST al endpoint
-    this.http.post(url, formData).subscribe(
+    // Utiliza el servicio ReceptionUsersService para subir el archivo CSV
+    this.receptionUsersService.uploadCsv(formData).subscribe(
       (response) => {
         console.log('Success:', response);
-        this.uploadMessage = 'CSV file uploaded successfully!';
-      },
+        this.uploadMessage = 'Se subió correctamente el archivo!';
+    },
       (error) => {
         console.error('Error:', error);
-        this.uploadMessage = 'Failed to upload the CSV file!';
+        this.uploadMessage = 'Falló la subida del archivo.';
       }
     );
   }
+  
   
   
   

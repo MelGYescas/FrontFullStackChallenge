@@ -8,12 +8,17 @@ import { AppComponent } from './app.component';
 import { UploadCsvComponent } from './upload-csv/upload-csv.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewDataComponent } from './view-data/view-data.component';
+import { HomeComponent } from './home/home.component';
+
+import { environment } from 'src/environments/environment.prod';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadCsvComponent,
-    ViewDataComponent
+    ViewDataComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
