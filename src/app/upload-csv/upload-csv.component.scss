@@ -1,0 +1,93 @@
+.home-section{
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.upload-csv {
+    background-color: var(--color-peach-very-light);
+    border: 1px solid var(--color-peach);
+    border-radius: 5px;
+    padding: 20px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+    i {color: var(--color-pink);}
+    }
+
+    input[type="file"] {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        }
+        
+        input[type="file"]::before {
+        content: 'Seleccionar archivo';
+        display: inline-block;
+        color: var(--color-pink);
+        padding: .5rem 1rem;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    input[type="file"]:hover::before {
+    background-color: var(--color-peach-regular);
+    }
+    
+    input[type="file"]:focus::before {
+    outline: none;
+    box-shadow: 0 0 5px var(--color-peach);
+    }
+    
+    input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+        position: absolute;
+        left: 0;
+    }
+
+    button {
+    background-color: var(--color-pink);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: var(--color-peach-regular);
+    }
+
+    &:active {
+        transform: translateY(2px);
+    }
+
+    &[disabled] {
+        opacity: 0.5;
+        cursor: default;
+    }
+    }
+
+    p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    }
+
+    .config{
+        margin: 2rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+}

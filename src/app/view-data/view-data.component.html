@@ -1,0 +1,32 @@
+<div class="home-section">
+    <div class="view-table" *ngIf="customers">
+        <button routerLink="/">Atras</button>
+        <table>
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customers.repeat_true_customers" class="bg--red">
+                    <td>{{ customer.nombre }}</td>
+                    
+                    <td [ngClass]="{'bg--yellow': !isValidPhoneNumber(customer.telefono)}">{{ customer.telefono }}</td>
+                    <td [ngClass]="{'bg--yellow': !isValidEmail(customer.correo)}">{{ customer.correo }}</td>
+
+
+                </tr>
+                <tr *ngFor="let customer of customers.repeat_false_customers">
+                    <td>{{ customer.nombre }}</td>
+                    <td [ngClass]="customer.emailClass">{{ customer.correo }}</td>
+                    <td [ngClass]="customer.phoneClass">{{ customer.telefono }}</td>
+                </tr>
+                
+            </tbody>
+    
+        </table>
+    
+    </div>
+</div>
